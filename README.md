@@ -14,6 +14,7 @@ The following Python file "Meola_ECE_5470_HW_2" accomplishes the following, in o
            and kernel as an input and returns a sharpened output image.
  
  The function "spatialFiltering" accomplishes the following:
+ 
    4. Loads the image pixel values into a matrix.
    5. Applies convolution of kernel and image.
    6. 
