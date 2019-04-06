@@ -1,6 +1,7 @@
 ECE_5470_Homework_2
 
 Charlotte Meola
+
 ECE 5470, Digital Image Processing 
 
 Homework #2: Spatial Filtering
