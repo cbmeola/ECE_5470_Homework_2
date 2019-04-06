@@ -33,6 +33,6 @@ The Python file "Meola_ECE_5470_HW_2.py" accomplishes the following, in order:
    
 4.	Final sharpened output is saved and displayed [g]. 
 
-5.	Images resulting from every step is saved in a subplot figure [Rsesults_Figure].
+5.	Images resulting from every step are saved in a subplot figure [Rsesults_Figure].
 
 --------------------------------------------------------------------------------------
