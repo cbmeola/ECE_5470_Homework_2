@@ -5,7 +5,7 @@ ECE 5470, Digital Image Processing
 
 Homework #2: Spatial Filtering
 ---------------------------------------------------------------------------------------
-The following Python file "Meola_ECE_5470_HW_2.py" accomplishes the following, in order:
+The Python file "Meola_ECE_5470_HW_2.py" accomplishes the following, in order:
 
 1.	Opens and displays a noisy image [input_image].
 
