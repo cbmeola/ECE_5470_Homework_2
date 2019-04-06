@@ -12,8 +12,8 @@ The following Python file "Meola_ECE_5470_HW_2.py" accomplishes the following, i
 2.	Defines a Gaussian kernel of size 3x3 [gaussian_kernel].
 
 3.	Creates a function "spatialFiltering" that takes an image [f] and kernel [w] as an input 
-         and returns a sharpened output image. The function "spatialFiltering" accomplishes 
-         the following, in order: 
+                  and returns a sharpened output image. 
+                  The function "spatialFiltering" accomplishes the following, in order: 
          
          a.	Defines center of kernel [offset].
    
@@ -21,11 +21,11 @@ The following Python file "Meola_ECE_5470_HW_2.py" accomplishes the following, i
    
          c.	Applies zero padding to create larger image [pad_f].
    
-         d.	Creates a function "gaussianFiltering" that takes a sigma size and size of kernel as 
-                           an input and returns a Gaussian filtered output image [gGaussian].  
+         d.	Creates a function "gaussianFiltering" that takes a sigma size and size of kernel 
+                           as an input and returns a Gaussian filtered output image [gGaussian].  
                            The function "gaussianFiltering" accomplishes the following:
           
-                  i.	Applies convolution of kernel and padded image [gGaussian].
+                   i.	Applies convolution of kernel and padded image [gGaussian].
                
          e.	Takes the Laplacian of the Gaussian image and returns the result [gLoG].
    
