@@ -18,13 +18,12 @@ The MATLAB file "Meola_ECE_5470_HW_2.m" accomplishes the following, in order:
 
 4.	Calls "gaussianKernel" to get kernel value, [g_kernel].
 
-5.	Creates a function called "spatialFiltering" that takes (1) an image [f] and (2) the Gaussian kernel [w] as an input and returns a sharpened output image. 
-The function "spatialFiltering" accomplishes the following, in order: 
+5.	Creates a function called "spatialFiltering" that takes (1) an image [f] and (2) the Gaussian kernel [w] as an input and returns a sharpened output image. The function "spatialFiltering" accomplishes the following, in order: 
 
-  a.	Applies zero padding to create larger image [pad_f].
-  b.	Applies convolution of kernel and padded image [gGaussian].
-  c.	Takes the Laplacian of the Gaussian image and returns the result [gLoG].
-  d.	Sharpens the original image by using the formula g = f +c*gLoG
+      a.	Applies zero padding to create larger image [pad_f].
+      b.	Applies convolution of kernel and padded image [gGaussian].
+      c.	Takes the Laplacian of the Gaussian image and returns the result [gLoG].
+      d.	Sharpens the original image by using the formula g = f +c*gLoG
 
 6.	Calls "spatialFiltering. " The final sharpened output is saved and displayed [g]. 
 
