@@ -1,5 +1,3 @@
-ECE_5470_Homework_2
-
 
 Charlotte Meola
 
@@ -7,8 +5,10 @@ ECE 5470, Digital Image Processing
 
 Homework #2: Spatial Filtering
 
+
 ---------------------------------------------------------------------------------------
 The MATLAB file "Meola_ECE_5470_HW_2.m" accomplishes the following, in order:
+
 
 1.	Opens and displays a noisy image [input_image]
 
