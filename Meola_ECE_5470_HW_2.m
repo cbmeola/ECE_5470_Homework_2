@@ -1,10 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Meola_ECE_5470_Homework_2.m
+% Meola_ECE_5470_HW_2.m
 
 % Charlotte Meola
 % ECE 5470, Digital Image Processing 
 % Homework #2: Spatial Filtering
+
+% File accomplishes all spatial filtering steps listed in README file.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -39,7 +41,7 @@ saveas(gcf,'Results_Figure.png')
 
 % Saves and displays the final image, g:
 figure(2)
-imshow(g, []); saveas(gcf,'output_image.jpg')
+imshow(g, []); saveas(gcf,'output_image.png')
 
 
 
@@ -51,11 +53,14 @@ imshow(g, []); saveas(gcf,'output_image.jpg')
     
     % Get size for filter kernel:
     size_w = size(w);
-
-    % Dislpay original image:
+    
+    % 5a. Applies zero padding to create larger image [pad_f].
+    f = padarray(f,[10, 10],0, 'both') 
+    
+        % Dislpay original image:
     subplot(2,3,1),imshow(f),title('Original Image, f')
 
-    % 5b.	Applies convolution of kernel and image [gGaussian].
+    % 5b. Applies convolution of kernel and image [gGaussian].
     gGaussian = convn(f, w)
     [M N]= size(gGaussian);
     
@@ -64,7 +69,7 @@ imshow(g, []); saveas(gcf,'output_image.jpg')
 
 
     % Use the Laplacian kernel to create the Laplacian of Gaussian image:     
-    %l_kernel = [0, 1, 0; 1, -4, 1; 0, 1, 0];
+    %l_kernel = [0, 1, 0; 1, -4, 1; 0, 1, 0]; % Alternative filter.
      l_kernel = [-1, -1, -1; 
                  -1, 8,  -1; 
                  -1, -1, -1];
@@ -81,10 +86,13 @@ imshow(g, []); saveas(gcf,'output_image.jpg')
 
     % Display LoG image result:
     subplot(2,3,5),imshow(gLoG, []),title('Laplacian of Gaussian Image, LoG')
-
-    %Unpad the image to get the same size matrices f
-    n = 1;
+    
+    
+    % Unpad the images to get the same size images as original, f:
+    n = 5;
     gLoG = gLoG(n+1:end-n,n+1:end-n); 
+    n=4;
+    f = f(n+1:end-n,n+1:end-n); 
 
     % 5d. Sharpens the original image by using the formula g = f +c*gLoG.
      g = uint8((gLoG)) +  uint8(f);
