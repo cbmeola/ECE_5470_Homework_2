@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Meola_ECE_5470_HW_2.m
 
@@ -8,11 +8,12 @@
 
 % File accomplishes all spatial filtering steps listed in README file.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 close all;
 clear all;
 clc;
+
 
 % 1.Opens and displays an image [input_image].
 input_image = imread('input_image.png');
@@ -44,6 +45,49 @@ figure(2)
 imshow(g, []); saveas(gcf,'output_image.png')
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function body for "getGaussianKernel" :
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 3.  Creates a function "getGaussianKernel" that takes (1) the sigma size 
+% and (2) the size of the kernel as inputs and returns a 
+% Gaussian filter kernel [g_kernel].
+
+function g_kernel = getGaussianKernel(size_w, sigma)
+    
+    % Get size of kernel:
+    s = size_w(1);
+    t = size_w(2);
+
+    % Allocate space for Gaussian kernel:
+    g_kernel = zeros(s, t);
+
+    % Uses element-by-element calcualation for Gaussian LPF:
+    % Loop over all rows and columns:
+    for ii=1:s
+        for jj=1:t            
+            % Use Gaussian kernel equation:
+            new = exp(-(ii^2+jj^2)/(2*sigma^2));
+            
+            % Save value in kernel matrix:
+            g_kernel(ii,jj)= new;
+            
+        end
+    end    
+
+    % Display Gaussian filter kernel:
+    subplot(2,3,2),imshow((g_kernel), []),title('Gaussian Filter Kernel')
+        
+      
+end % End of "getGaussianKernel" function.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function body for "spatialFiltering" :
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 5.	Creates a function called "spatialFiltering" that takes (1) an 
 % image [f] and (2) the Gaussian kernel [w] and (3) sigma as inputs and 
@@ -95,7 +139,8 @@ imshow(g, []); saveas(gcf,'output_image.png')
     f = f(n+1:end-n,n+1:end-n); 
 
     % 5d. Sharpens the original image by using the formula g = f +c*gLoG.
-     g = uint8((gLoG)) +  uint8(f);
+    c = 1.5; 
+    g = c*uint8((gLoG)) +  uint8(f);
     
     % Display final result, sharpened image:
     subplot(2,3,6),imshow(g, []),title({'Sharpened Image, g', 'g = f + gLoG'})
@@ -106,34 +151,3 @@ imshow(g, []); saveas(gcf,'output_image.png')
   
  
  
-% 3.  Creates a function "getGaussianKernel" that takes (1) the sigma size 
-% and (2) the size of the kernel as inputs and returns a 
-% Gaussian filter kernel [g_kernel].
-
-function g_kernel = getGaussianKernel(size_w, sigma)
-    
-    % Get size of kernel:
-    s = size_w(1);
-    t = size_w(2);
-
-    % Allocate space for Gaussian kernel:
-    g_kernel = zeros(s, t);
-
-    % Uses element-by-element calcualation for Gaussian LPF:
-    % Loop over all rows and columns:
-    for ii=1:s
-        for jj=1:t            
-            % Use Gaussian kernel equation:
-            new = exp(-(ii^2+jj^2)/(2*sigma^2));
-            
-            % Save value in kernel matrix:
-            g_kernel(ii,jj)= new;
-            
-        end
-    end    
-
-    % Display Gaussian filter kernel:
-    subplot(2,3,2),imshow((g_kernel), []),title('Gaussian Filter Kernel')
-        
-      
-end % End of "getGaussianKernel" function.
