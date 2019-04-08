@@ -70,10 +70,7 @@ function g_kernel = getGaussianKernel(size_w, sigma)
             g_kernel(ii,jj)= new;            
         end
     end    
-
-    % Display Gaussian filter kernel:
-    subplot(2,3,2),imshow((g_kernel), []),title('Gaussian Filter Kernel')
-        
+           
       
 end % End of "getGaussianKernel" function.
 
@@ -97,14 +94,14 @@ end % End of "getGaussianKernel" function.
     f = padarray(f,[10, 10],0, 'both') 
     
         % Dislpay original image:
-    subplot(2,3,1),imshow(f),title('Original Image, f')
+    subplot(2, 2,1),imshow(f),title('Original Image, f')
 
     % 5b. Applies convolution of kernel and image [gGaussian].
     gGaussian = convn(f, w)
     [M N]= size(gGaussian);
     
     % Display Gaussian of original image:
-    subplot(2,3,3),imshow(gGaussian, []),title('Gaussian (Smoothed) Image, gGaussian')
+    subplot(2, 2,2),imshow(gGaussian, []),title('Gaussian (Smoothed) Image, gGaussian')
 
 
     % Use the Laplacian kernel to create the Laplacian of Gaussian image:     
@@ -113,9 +110,7 @@ end % End of "getGaussianKernel" function.
                  -1, 8,  -1; 
                  -1, -1, -1];
     
-     % Display LoG flter kernel as image:
-    subplot(2,3,4),imshow(abs(l_kernel), []),title('Laplacian of Gaussian Filter Kernel')
-
+    
     % 5c. Takes the Laplacian of the Gaussian image and returns the result [gLoG].
     gLoG = imfilter(gGaussian, l_kernel)
     
@@ -124,7 +119,7 @@ end % End of "getGaussianKernel" function.
     gLoG= imfilter(gLoG, w);
 
     % Display LoG image result:
-    subplot(2,3,5),imshow(gLoG, []),title('Laplacian of Gaussian Image, LoG')
+    subplot(2, 2,3),imshow(gLoG, []),title('Laplacian of Gaussian Image, LoG')
     
     
     % Unpad the images to get the same size images as original, f:
@@ -138,7 +133,7 @@ end % End of "getGaussianKernel" function.
     g = c*uint8((gLoG)) +  uint8(f);
     
     % Display final result, sharpened image:
-    subplot(2,3,6),imshow(g, []),title({'Sharpened Image, g', 'g = f + gLoG'})
+    subplot(2, 2,4),imshow(g, []),title({'Sharpened Image, g', 'g = f + gLoG'})
 
 
  end % End of "spatialFiltering" function.
