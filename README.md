@@ -21,7 +21,7 @@ The MATLAB file "Meola_ECE_5470_HW_2.m" accomplishes the following:
 3.	Creates a function "getGaussianKernel" that takes (1) the sigma size and (2) the size of the kernel as inputs and returns a Gaussian filter kernel [g_kernel]. The function accomplishes the following:
 
                 a. Uses element-by-element calculations to find Gaussian LPF via the equation, 
-                          exp(-(ii^2+jj^2)/(2*sigma^2)).
+                          exp(-(x^2+y^2)/(2*sigma^2)).
 
 
 4.	Calls "getGaussianKernel" to get kernel value, [g_kernel].
