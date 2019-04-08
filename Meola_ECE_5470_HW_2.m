@@ -56,23 +56,18 @@ imshow(g, []); saveas(gcf,'output_image.png')
 
 function g_kernel = getGaussianKernel(size_w, sigma)
     
-    % Get size of kernel:
-    s = size_w(1);
-    t = size_w(2);
-
     % Allocate space for Gaussian kernel:
-    g_kernel = zeros(s, t);
+    g_kernel = zeros(size_w(1),size_w(2));
 
-    % Uses element-by-element calcualation for Gaussian LPF:
-    % Loop over all rows and columns:
-    for ii=1:s
-        for jj=1:t            
+    % 3a. Uses element-by-element calcualation for Gaussian LPF:
+    % Loops over all rows and columns:
+    for ii=1:size_w(1)
+        for jj=1:size_w(2)            
             % Use Gaussian kernel equation:
             new = exp(-(ii^2+jj^2)/(2*sigma^2));
             
             % Save value in kernel matrix:
-            g_kernel(ii,jj)= new;
-            
+            g_kernel(ii,jj)= new;            
         end
     end    
 
@@ -138,7 +133,7 @@ end % End of "getGaussianKernel" function.
     n=4;
     f = f(n+1:end-n,n+1:end-n); 
 
-    % 5d. Sharpens the original image by using the formula g = f +c*gLoG.
+    % 5d. Returns the sharpened image by using the formula g = f +c*gLoG.
     c = 1.5; 
     g = c*uint8((gLoG)) +  uint8(f);
     
